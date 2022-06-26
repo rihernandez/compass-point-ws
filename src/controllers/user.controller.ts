@@ -4,6 +4,7 @@ import { User } from "../entity/User";
 interface UserBody {
   firstname: string;
   lastname: string;
+  active: boolean;
 }
 
 export const getUsers = async (req: Request, res: Response) => {
@@ -36,10 +37,11 @@ export const createUser = async (
   req: Request<unknown, unknown, UserBody>,
   res: Response
 ) => {
-  const { firstname, lastname } = req.body;
+  const { firstname, lastname, active } = req.body;
   const user = new User();
   user.firstname = firstname;
   user.lastname = lastname;
+  user.active = active;
   await user.save();
   return res.json(user);
 };
