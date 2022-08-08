@@ -13,11 +13,20 @@ import {
     id: number;
   
     @Column()
-    firstname: string;
+    nombre: string;
   
     @Column()
-    lastname: string;
+    apellido: string;
+
+    @Column()
+    gmail: string;
   
+    @Column()
+    contrasena: string;
+
+    @Column()
+    admin: string;
+
     @Column({ default: true })
     active: boolean;
   

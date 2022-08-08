@@ -11,28 +11,31 @@ import {
   export class Form extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
+
+    @Column()
+    idUsuario: number;
   
     @Column()
-    student_name: string;
+    nombreEstudiante: string;
   
     @Column()
-    student_last_name: string;
+    apellidoEstudiante: string;
 
     @Column()
-    acta: string;
+    actaNacimiento: string;
 
     @Column()
-    address: string;
+    direccion: string;
 
     @Column()
-    father_name: string;
+    nombrePadre: string;
 
     @Column()
-    father_last_name: string;
+    apellidoPadre: string;
 
 
     @Column()
-    phone: string;
+    telefono: string;
 
 
     @Column()
@@ -40,11 +43,11 @@ import {
 
 
     @Column( {default: true})
-    confirmation: boolean;
+    confirmacion: boolean;
   
 
     @Column( {default: true})
-    payment: boolean;
+    pago: boolean;
 
 
     @CreateDateColumn()
@@ -53,3 +56,4 @@ import {
     @UpdateDateColumn()
     updatedAt: Date;
   }
+

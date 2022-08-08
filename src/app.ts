@@ -8,6 +8,7 @@ import familyRoutes from "./routes/family.route";
 import billRoutes from "./routes/bill.route";
 import studentRoutes from "./routes/student.route";
 import roleRoutes from "./routes/role.route";
+import formRoutes from "./routes/form.router";
 
 const app = express();
 
@@ -21,5 +22,6 @@ app.use("/api/v1", familyRoutes);
 app.use("/api/v1", billRoutes);
 app.use("/api/v1", studentRoutes);
 app.use("/api/v1", roleRoutes);
+app.use("/api/v1", formRoutes);
 
 export default app;

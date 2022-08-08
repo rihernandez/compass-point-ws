@@ -2,9 +2,12 @@ import { Request, Response } from "express";
 import { User } from "../entity/User";
 
 interface UserBody {
-  firstname: string;
-  lastname: string;
-  active: boolean;
+  nombre: string;
+  apellido: string;
+  gmail: string;
+  contrasena: string;
+  admin: string;
+  password: string;
 }
 
 export const getUsers = async (req: Request, res: Response) => {
@@ -37,11 +40,19 @@ export const createUser = async (
   req: Request<unknown, unknown, UserBody>,
   res: Response
 ) => {
-  const { firstname, lastname, active } = req.body;
+  const { 
+    nombre,
+    apellido,
+    gmail,
+    contrasena,
+    admin
+  } = req.body;
   const user = new User();
-  user.firstname = firstname;
-  user.lastname = lastname;
-  user.active = active;
+  user.nombre=nombre;
+  user.apellido= apellido;
+  user.gmail= gmail;
+  user.contrasena = contrasena;
+  user.admin = admin;
   await user.save();
   return res.json(user);
 };

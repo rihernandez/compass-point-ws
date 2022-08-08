@@ -2,16 +2,17 @@ import { Request, Response } from "express";
 import { Form } from "../entity/Form";
 
 interface FormBody {
-    student_name : string;
-    student_last_name: string;
-    acta: string;
-    address: string;
-    father_name: string;
-    father_last_name: string;
-    phone: string;
+    idUsuario:number;
+    nombreEstudiante: string;
+    apellidoEstudiante: string;
+    actaNacimiento: string;
+    direccion: string;
+    nombrePadre: string;
+    apellidoPadre: string;
+    telefono: string;
     cedula: string;
-    confirmation: boolean;
-    payment: boolean;
+    confirmacion: boolean;
+    pago:boolean;
 }
 
 export const getForms = async (req: Request, res: Response) => {
@@ -46,28 +47,31 @@ export const createForm = async (
 ) => {
 
   const {  
-    student_name,
-    student_last_name,
-    acta,
-    address,
-    father_name,
-    father_last_name,
-    phone,
+    idUsuario,
+    nombreEstudiante,
+    apellidoEstudiante,
+    actaNacimiento,
+    direccion,
+    nombrePadre,
+    apellidoPadre,
+    telefono,
     cedula,
-    confirmation,
-    payment
+    confirmacion,
+    pago
+
   } = req.body;
   const result = new Form();
-  result.student_name= student_name;
-  result.student_last_name= student_last_name;
-  result.acta = acta;
-  result.address = address;
-  result.father_name = father_name;
-  result.father_last_name = father_last_name;
-  result.phone = phone;
+  result.idUsuario=idUsuario;
+  result.nombreEstudiante = nombreEstudiante;
+  result.apellidoEstudiante = apellidoEstudiante;
+  result.actaNacimiento = actaNacimiento;
+  result.direccion = direccion;
+  result.nombrePadre = nombrePadre;
+  result.apellidoPadre = apellidoPadre;
+  result.telefono = telefono;
   result.cedula = cedula;
-  result.confirmation = confirmation;
-  result.payment = payment
+  result.confirmacion = confirmacion;
+  result.pago = pago;
   await result.save();
   return res.json(result);
 };
