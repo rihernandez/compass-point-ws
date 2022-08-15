@@ -1,6 +1,9 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
+import bodyParser from 'body-parser';
+
+
 
 import userRoutes from "./routes/users.route";
 import chargeRoutes from "./routes/charge.route";
@@ -11,6 +14,9 @@ import roleRoutes from "./routes/role.route";
 import formRoutes from "./routes/form.router";
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.use(cors());
 app.use(morgan("dev"));

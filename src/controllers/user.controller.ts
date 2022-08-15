@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { sendEmail } from "../config/mta";
 import { User } from "../entity/User";
 
 interface UserBody {
@@ -54,6 +55,19 @@ export const createUser = async (
   user.contrasena = contrasena;
   user.admin = admin;
   await user.save();
+
+  const payload = {
+    from: '"CompassPoint" <rhc921004@gmail.com>',
+    to:gmail,
+    subject:'Registro de usuario ✔', 
+    text:'BIENVENIDO! '+nombre+''+apellido,
+    html: '<b>BIENVENIDO!</b> '+nombre+''+apellido +' <p>Gracias por registrarse en nuestra plataforma, su nuevo usuario es: <i>'+gmail+'</i> Y su contraseña: <b>'+contrasena+'</b>. <p>Recomendamos cambiar sus credenciales de acceso en cualquier momento para evitar uso mal intencionado de terceros que puedan acerse con las mismas.</p> \n Attentamente el <b>Equipo de CompassPoint</b>'
+  }
+ try{
+  sendEmail(payload);
+ }catch(e){
+  console.log("there is an error trying to send an email");
+ }
   return res.json(user);
 };
 
