@@ -54,7 +54,6 @@ import {
     documento_personal: string;
 
 
-
     @Column({default: null})
     curso: string;
 
