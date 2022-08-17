@@ -28,7 +28,18 @@ router.get("/forms/:id", getForm);
 
 router.post("/forms", createForm);
 
-router.post('/uploadfile', upload.single('document'), (req, res, next) => {
+router.post('/documento', upload.single('document'), (req, res, next) => {
+  const file : any = req.file
+  if (!file) {
+    const error = new Error('Please upload a file')
+    return next(error)
+  }
+    res.send(file)
+  
+})
+
+
+router.post('/acta-personal', upload.single('acta'), (req, res, next) => {
   const file : any = req.file
   if (!file) {
     const error = new Error('Please upload a file')

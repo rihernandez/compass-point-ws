@@ -50,6 +50,15 @@ import {
     pago: boolean;
 
 
+    @Column({default: null})
+    documento_personal: string;
+
+
+
+    @Column({default: null})
+    curso: string;
+
+
     @CreateDateColumn()
     createdAt: Date;
   
