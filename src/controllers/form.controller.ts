@@ -60,7 +60,9 @@ export const createForm = async (
     telefono,
     cedula,
     confirmacion,
-    pago
+    pago,
+    curso,
+    documento_personal
 
   } = req.body;
   const result = new Form();
@@ -75,6 +77,8 @@ export const createForm = async (
   result.cedula = cedula;
   result.confirmacion = confirmacion;
   result.pago = pago;
+  result.curso = curso;
+  result.documento_personal = documento_personal;
   await result.save();
   return res.json(result);
 };
