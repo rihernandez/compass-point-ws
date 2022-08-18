@@ -65,6 +65,8 @@ export const createForm = async (
     documento_personal
 
   } = req.body;
+
+  console.log(req.body)
   const result = new Form();
   result.idUsuario=idUsuario;
   result.nombreEstudiante = nombreEstudiante;
