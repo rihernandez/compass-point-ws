@@ -13,6 +13,9 @@ interface FormBody {
     cedula: string;
     confirmacion: boolean;
     pago:boolean;
+    documento_personal: string;
+    curso: string;
+
 }
 
 export const getForms = async (req: Request, res: Response) => {
