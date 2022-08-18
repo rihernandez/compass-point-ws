@@ -50,11 +50,11 @@ import {
     pago: boolean;
 
 
-    @Column({default: null})
+    @Column()
     documento_personal: string;
 
 
-    @Column({default: null})
+    @Column()
     curso: string;
 
 
