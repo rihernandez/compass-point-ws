@@ -15,30 +15,29 @@ import {
     @Column({nullable:true})
     idUsuario: number;
   
-    @Column()
+    @Column({nullable:true})
     nombreEstudiante: string;
-  
-    @Column()
+    @Column({nullable:true})
     apellidoEstudiante: string;
 
-    @Column()
+    @Column({nullable:true})
     actaNacimiento: string;
 
-    @Column()
+    @Column({nullable:true})
     direccion: string;
 
-    @Column()
+    @Column({nullable:true})
     nombrePadre: string;
 
-    @Column()
+    @Column({nullable:true})
     apellidoPadre: string;
 
 
-    @Column()
+    @Column({nullable:true})
     telefono: string;
 
 
-    @Column()
+    @Column({nullable:true})
     cedula: string;
 
 
@@ -50,11 +49,11 @@ import {
     pago: boolean;
 
 
-    @Column()
+    @Column({nullable:true})
     documento_personal: string;
 
 
-    @Column()
+    @Column({nullable:true})
     curso: string;
 
 
