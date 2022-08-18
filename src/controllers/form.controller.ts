@@ -45,7 +45,7 @@ export const getForm = async (req: Request, res: Response) => {
 };
 
 export const createForm = async (
-  req: Request<unknown, unknown, FormBody>,
+  req: Request,
   res: Response
 ) => {
 
