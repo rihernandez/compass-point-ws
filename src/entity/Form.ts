@@ -12,32 +12,33 @@ import {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({nullable:true})
+    @Column()
     idUsuario: number;
   
-    @Column({nullable:true})
+    @Column()
     nombreEstudiante: string;
-    @Column({nullable:true})
+  
+    @Column()
     apellidoEstudiante: string;
 
-    @Column({nullable:true})
+    @Column()
     actaNacimiento: string;
 
-    @Column({nullable:true})
+    @Column()
     direccion: string;
 
-    @Column({nullable:true})
+    @Column()
     nombrePadre: string;
 
-    @Column({nullable:true})
+    @Column()
     apellidoPadre: string;
 
 
-    @Column({nullable:true})
+    @Column()
     telefono: string;
 
 
-    @Column({nullable:true})
+    @Column()
     cedula: string;
 
 
@@ -49,11 +50,11 @@ import {
     pago: boolean;
 
 
-    @Column({nullable:true})
+    @Column()
     documento_personal: string;
 
 
-    @Column({nullable:true})
+    @Column()
     curso: string;
 
 
