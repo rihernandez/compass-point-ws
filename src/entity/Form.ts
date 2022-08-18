@@ -12,7 +12,7 @@ import {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({nullable:true})
+    @Column()
     idUsuario: number;
   
     @Column()
