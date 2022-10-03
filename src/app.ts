@@ -12,6 +12,7 @@ import billRoutes from "./routes/bill.route";
 import studentRoutes from "./routes/student.route";
 import roleRoutes from "./routes/role.route";
 import formRoutes from "./routes/form.router";
+import estudianteRoutes from "./routes/estudiante.router";
 
 const app = express();
 
@@ -29,5 +30,6 @@ app.use("/api/v1", billRoutes);
 app.use("/api/v1", studentRoutes);
 app.use("/api/v1", roleRoutes);
 app.use("/api/v1", formRoutes);
+app.use("/api/v1", estudianteRoutes);
 
 export default app;

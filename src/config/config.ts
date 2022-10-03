@@ -4,8 +4,8 @@ export const gmail = {
     port: 465,
     secure: true, // use SSL
     auth: {
-        user: 'rhc921004@gmail.com',
-        pass: 'gofaxcqoqyhzajru'
+        user: 'whilmis21@gmail.com',
+        pass: 'kgoryaohprzbvbye'
     }
 }
 

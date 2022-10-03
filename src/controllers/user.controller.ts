@@ -57,7 +57,7 @@ export const createUser = async (
   await user.save();
 
   const payload = {
-    from: '"CompassPoint" <rhc921004@gmail.com>',
+    from: '"CompassPoint" <whilmis21@gmail.com>',
     to:gmail,
     subject:'Registro de usuario ✔', 
     text:'BIENVENIDO! '+nombre+''+apellido,
