@@ -13,6 +13,9 @@ import {
     id: number;
   
     @Column()
+    cedula: string;
+
+    @Column()
     nombre: string;
   
     @Column()

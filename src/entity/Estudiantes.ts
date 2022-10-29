@@ -21,9 +21,6 @@ import {
   
     @Column({nullable:true})
     apellidoEstudiante: string;
-  
-    @Column({nullable:true})
-    actaNacimiento: string;
 
     @Column({nullable:true})
     curso: string;
@@ -33,27 +30,18 @@ import {
   
     @Column({nullable:true})
     fecha_n: string;
-
-    @Column({nullable:true})
-    vacunas: string;
   
     @Column({nullable:true})
     discapacidad: string;
   
     @Column({nullable:true})
     tipo_sangre: string;
-
-    @Column({nullable:true})
-    seguro_medico: string;
   
     @Column({nullable:true})
     alergias: string;
   
     @Column({nullable:true})
     tipo_de_estudiante: string;
-
-    @Column({nullable:true})
-    foto: string;
   
     @Column({nullable:true})
     cedula: string;
@@ -83,9 +71,6 @@ import {
     nacionalidad: string;
   
     @Column({nullable:true})
-    documento_personal: string;
-  
-    @Column({nullable:true})
     otro: string;
 
     @Column({nullable:true})
@@ -102,9 +87,6 @@ import {
   
     @Column({nullable:true})
     direccion2: string;
-  
-    @Column({nullable:true})
-    documento_personal2: string;
 
     @Column({nullable:true})
     estado_acta: string;
@@ -129,6 +111,9 @@ import {
   
     @Column({nullable:true})
     year: number;
+
+    @Column({nullable:true})
+    tanda: string;
 
     @CreateDateColumn()
     createdAt: Date;

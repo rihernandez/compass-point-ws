@@ -41,6 +41,7 @@ interface EstudianteBody {
     libro: number;
     folio: number;
     year: number;
+    tanda: string
 }
 
 export const getEstudiantes = async (req: Request, res: Response) => {
@@ -77,17 +78,13 @@ export const createEstudiante = async (
         idUsuario,
         nombreEstudiante,
         apellidoEstudiante,
-        actaNacimiento,
         curso,
         sexo,
         fecha_n,
-        vacunas,
         discapacidad,
         tipo_sangre,
-        seguro_medico,
         alergias,
         tipo_de_estudiante,
-        foto,
         cedula,
         nombrePadre,
         apellidoPadre,
@@ -97,14 +94,12 @@ export const createEstudiante = async (
         tipo_trabajo,
         correo,
         nacionalidad,
-        documento_personal,
         otro,
         cedula2,
         nombrePadre2,
         apellidoPadre2,
         telefono2,
         direccion2,
-        documento_personal2,
         estado_acta,
         numero_de_acta,
         provincias_JCE,
@@ -113,22 +108,19 @@ export const createEstudiante = async (
         libro,
         folio,
         year,
+        tanda
     } = req.body
     const result = new Estudiante();
     result.idUsuario = idUsuario;
     result.nombreEstudiante = nombreEstudiante;
     result.apellidoEstudiante = apellidoEstudiante;
-    result.actaNacimiento = actaNacimiento;
     result.curso = curso;
     result.sexo = sexo;
     result.fecha_n = fecha_n;
-    result.vacunas = vacunas;
     result.discapacidad = discapacidad;
     result.tipo_sangre = tipo_sangre;
-    result.seguro_medico = seguro_medico;
     result.alergias = alergias;
     result.tipo_de_estudiante = tipo_de_estudiante;
-    result.foto = foto;
     result.cedula = cedula;
     result.nombrePadre = nombrePadre;
     result.apellidoPadre = apellidoPadre;
@@ -138,14 +130,12 @@ export const createEstudiante = async (
     result.tipo_trabajo = tipo_trabajo;
     result.correo = correo;
     result.nacionalidad = nacionalidad;
-    result.documento_personal = documento_personal;
     result.otro = otro;
     result.cedula2 = cedula2;
     result.nombrePadre2 = nombrePadre2;
     result.apellidoPadre2 = apellidoPadre2;
     result.telefono2 = telefono2;
     result.direccion2 = direccion2;
-    result.documento_personal2 = documento_personal2;
     result.estado_acta = estado_acta;
     result.numero_de_acta = numero_de_acta;
     result.provincias_JCE = provincias_JCE;
@@ -154,8 +144,9 @@ export const createEstudiante = async (
     result.libro = libro;
     result.folio = folio;
     result.year = year;
+    result.tanda = tanda;
     await result.save();
-    return res.json(result);
+    return;
 };
 
 
@@ -163,12 +154,81 @@ export const createEstudiante = async (
 
 export const updateEstudiante = async (req: Request, res: Response) => {
     const { id } = req.params;
-
+    const {
+        idUsuario,
+        nombreEstudiante,
+        apellidoEstudiante,
+        curso,
+        sexo,
+        fecha_n,
+        discapacidad,
+        tipo_sangre,
+        alergias,
+        tipo_de_estudiante,
+        cedula,
+        nombrePadre,
+        apellidoPadre,
+        telefono,
+        direccion,
+        trabajo,
+        tipo_trabajo,
+        correo,
+        nacionalidad,
+        otro,
+        cedula2,
+        nombrePadre2,
+        apellidoPadre2,
+        telefono2,
+        direccion2,
+        estado_acta,
+        numero_de_acta,
+        provincias_JCE,
+        municipio_JCE,
+        oficialias_JCE,
+        libro,
+        folio,
+        year,
+        tanda
+    } = req.body
     try {
+        
         const result = await Estudiante.findOneBy({ id: parseInt(id) });
         if (!result) return res.status(404).json({ message: "Not Estudiante found" });
 
-        await Estudiante.update({ id: parseInt(id) }, req.body);
+        const resUpdate = new Estudiante();
+        resUpdate.idUsuario = idUsuario;
+        resUpdate.nombreEstudiante = nombreEstudiante;
+        resUpdate.apellidoEstudiante = apellidoEstudiante;
+        resUpdate.curso = curso;
+        resUpdate.sexo = sexo;
+        resUpdate.fecha_n = fecha_n;
+        resUpdate.discapacidad = discapacidad;
+        resUpdate.tipo_sangre = tipo_sangre;
+        resUpdate.alergias = alergias;
+        resUpdate.tipo_de_estudiante = tipo_de_estudiante;
+        resUpdate.cedula = cedula;
+        resUpdate.nombrePadre = nombrePadre;
+        resUpdate.apellidoPadre = apellidoPadre;
+        resUpdate.telefono = telefono;
+        resUpdate.direccion = direccion;
+        resUpdate.trabajo = trabajo;
+        resUpdate.tipo_trabajo = tipo_trabajo;
+        resUpdate.correo = correo;
+        resUpdate.nacionalidad = nacionalidad;
+        resUpdate.otro = otro;
+        resUpdate.cedula2 = cedula2;
+        resUpdate.nombrePadre2 = nombrePadre2;
+        resUpdate.apellidoPadre2 = apellidoPadre2;
+        resUpdate.telefono2 = telefono2;
+        resUpdate.direccion2 = direccion2;
+        resUpdate.estado_acta = estado_acta;
+        resUpdate.numero_de_acta = numero_de_acta;
+        resUpdate.provincias_JCE = provincias_JCE;
+        resUpdate.municipio_JCE = municipio_JCE;
+        resUpdate.oficialias_JCE = oficialias_JCE;
+        resUpdate.tanda = tanda;
+
+        await Estudiante.update({ id: parseInt(id) }, resUpdate);
 
         return res.sendStatus(204);
     } catch (error) {

@@ -30,6 +30,6 @@ app.use("/api/v1", billRoutes);
 app.use("/api/v1", studentRoutes);
 app.use("/api/v1", roleRoutes);
 app.use("/api/v1", formRoutes);
-app.use("/api/v1", estudianteRoutes);
+// app.use("/api/v1", estudianteRoutes);
 
 export default app;

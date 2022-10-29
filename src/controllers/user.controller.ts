@@ -3,6 +3,7 @@ import { sendEmail } from "../config/mta";
 import { User } from "../entity/User";
 
 interface UserBody {
+  cedula: string;
   nombre: string;
   apellido: string;
   gmail: string;
@@ -42,6 +43,7 @@ export const createUser = async (
   res: Response
 ) => {
   const { 
+    cedula,
     nombre,
     apellido,
     gmail,
@@ -49,6 +51,7 @@ export const createUser = async (
     admin
   } = req.body;
   const user = new User();
+  user.cedula = cedula;
   user.nombre=nombre;
   user.apellido= apellido;
   user.gmail= gmail;
