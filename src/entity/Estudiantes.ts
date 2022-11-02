@@ -115,11 +115,11 @@ import {
     @Column({nullable:true})
     tanda: string;
 
-    @Column({default:false})
-    confirmacion: boolean;
+    @Column({nullable:true})
+    confirmacion: string;
 
-    @Column({default:false})
-    pago: boolean;
+    @Column({nullable:true})
+    pago: string;
 
     @CreateDateColumn()
     createdAt: Date;
