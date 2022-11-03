@@ -42,6 +42,8 @@ interface EstudianteBody {
     folio: number;
     year: number;
     tanda: string
+    confirmacion: string;
+    pago:string
 }
 
 export const getEstudiantes = async (req: Request, res: Response) => {
@@ -108,7 +110,9 @@ export const createEstudiante = async (
         libro,
         folio,
         year,
-        tanda
+        tanda,
+        confirmacion,
+        pago
     } = req.body
     const result = new Estudiante();
     result.idUsuario = idUsuario;
@@ -145,8 +149,10 @@ export const createEstudiante = async (
     result.folio = folio;
     result.year = year;
     result.tanda = tanda;
+    result.confirmacion = confirmacion,
+    result.pago = pago
     await result.save();
-    return;
+    return result.id;
 };
 
 
@@ -188,7 +194,9 @@ export const updateEstudiante = async (req: Request, res: Response) => {
         libro,
         folio,
         year,
-        tanda
+        tanda,
+        confirmacion,
+        pago
     } = req.body
     try {
         
@@ -227,6 +235,8 @@ export const updateEstudiante = async (req: Request, res: Response) => {
         resUpdate.municipio_JCE = municipio_JCE;
         resUpdate.oficialias_JCE = oficialias_JCE;
         resUpdate.tanda = tanda;
+        resUpdate.confirmacion = confirmacion;
+        resUpdate.pago = pago
 
         await Estudiante.update({ id: parseInt(id) }, resUpdate);
 
