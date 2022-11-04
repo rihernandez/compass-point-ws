@@ -43,7 +43,7 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": "12.22.0"
+    "node": "14.17.6"
   },
   "bugs": {
     "url": "https://github.com/rihernandez/compass-point-ws/issues"
