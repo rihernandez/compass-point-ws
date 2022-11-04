@@ -43,7 +43,11 @@ interface EstudianteBody {
     year: number;
     tanda: string
     confirmacion: string;
-    pago:string
+    pago:string;
+    acta: string;
+    vacuna: string;
+    foto2x2: string;
+    documento: string;
 }
 
 export const getEstudiantes = async (req: Request, res: Response) => {
@@ -112,7 +116,13 @@ export const createEstudiante = async (
         year,
         tanda,
         confirmacion,
-        pago
+        pago,
+        acta,
+        vacuna,
+        foto2x2,
+        documento,
+        documento_personal2,
+        seguro_medico,
     } = req.body
     const result = new Estudiante();
     result.idUsuario = idUsuario;
@@ -150,7 +160,13 @@ export const createEstudiante = async (
     result.year = year;
     result.tanda = tanda;
     result.confirmacion = confirmacion,
-    result.pago = pago
+    result.pago = pago;
+    result.acta = acta;
+    result.vacuna = vacuna;
+    result.foto2x2 = foto2x2;
+    result.documento = documento;
+    result.documento_personal2 = documento_personal2;
+    result.seguro_medico = seguro_medico;
     await result.save();
     return result.id;
 };
@@ -196,7 +212,13 @@ export const updateEstudiante = async (req: Request, res: Response) => {
         year,
         tanda,
         confirmacion,
-        pago
+        pago,
+        acta,
+        vacuna,
+        foto2x2,
+        documento,
+        seguro_medico,
+        documento_personal2
     } = req.body
     try {
         
@@ -237,10 +259,16 @@ export const updateEstudiante = async (req: Request, res: Response) => {
         resUpdate.tanda = tanda;
         resUpdate.confirmacion = confirmacion;
         resUpdate.pago = pago
+        resUpdate.acta = acta;
+        resUpdate.vacuna = vacuna;
+        resUpdate.foto2x2 = foto2x2;
+        resUpdate.documento = documento
+        resUpdate.documento_personal2 = documento_personal2;
+        resUpdate.seguro_medico = seguro_medico;
 
         await Estudiante.update({ id: parseInt(id) }, resUpdate);
 
-        return res.sendStatus(204);
+        return res.sendStatus(200);
     } catch (error) {
         if (error instanceof Error) {
             return res.status(500).json({ message: error.message });

@@ -8,6 +8,10 @@ import {
     UpdateDateColumn,
   } from "typeorm";
   
+
+
+
+
   @Entity()
   export class Estudiante extends BaseEntity {
     @PrimaryGeneratedColumn()
@@ -120,6 +124,30 @@ import {
 
     @Column({nullable:true})
     pago: string;
+
+    @Column({nullable:true})
+    acta: string;
+
+
+    @Column({nullable:true})
+    vacuna: string;
+
+
+    @Column({nullable:true})
+    foto2x2: string;
+
+
+    @Column({nullable:true})
+    documento: string;
+
+    @Column({nullable:true})
+    documento_personal2: string;
+
+    @Column({nullable:true})
+    fotos2x2: string;
+
+    @Column({nullable:true})
+    seguro_medico: string;
 
     @CreateDateColumn()
     createdAt: Date;

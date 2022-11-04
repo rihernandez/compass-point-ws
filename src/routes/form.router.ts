@@ -17,24 +17,24 @@ import {client} from "../redis"
 
 
 
-client.on('error', (err) => console.error(err));
-client.on('connect',() => console.log('Connected!'));
+// client.on('error', (err) => console.error(err));
+// client.on('connect',() => console.log('Connected!'));
 
 
 
 const router = Router();
 router.use(bodyParser.urlencoded({ extended: false }))
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-      cb(null, 'uploads')
-  },
-  filename: function (req, file, cb) {
-      cb(null, file.originalname)
-  }
-})
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//       cb(null, 'uploads')
+//   },
+//   filename: function (req, file, cb) {
+//       cb(null, file.originalname)
+//   }
+// })
 
-const upload = multer({ storage: storage })
+// const upload = multer({ storage: storage })
 
 
 
@@ -44,7 +44,7 @@ router.post("/forms", createForm);
 
 
 
-router.post('/documento', upload.single('documento'), (req, res, next) => {
+router.post('/documento', (req, res, next) => {
   const file : any = req.file
   if (!file) {
     const error = new Error('Please upload a file')
@@ -62,35 +62,18 @@ router.get('/documento/:filename', (req, res) => {
 });
 
 
-router.post('/estudiantes', upload.fields([
-  {name:'acta', maxCount:300},
-  {name:'vacuna', maxCount:300},
-  {name:'seguro_medico', maxCount:300},
-  {name:'documento_personal', maxCount:300},
-  {name:'documento_personal-2', maxCount:300},
-  {name:'foto2x2', maxCount:300},
-  {name:'documento', maxCount:300}
-]), async (req, res, next) => {
-  const file : any = req.files
-  try {
+router.post('/estudiantes', async (req, res) => {
+  // const file : any = req.files
     const id = await createEstudiante(req,res);
-
-    await client.connect()
-    await client.set(String(id), JSON.stringify(file));
-    await client.disconnect()
-
-  } catch (error) {
-    console.log("Error trying to save estudent data")
- }
-    res.send(file)
+    res.send({"data saved successfully :": id})
   
 })
 
 router.get('/estudiantes/:id', async (req, res) => {
   const { id } = req.params;
-  await client.connect()
+  // await client.connect()
   const resultEstudiante = await client.get(String(id));
-  await client.disconnect()
+  // await client.disconnect()
 
 const documents = JSON.parse(JSON.parse(JSON.stringify(resultEstudiante)))
 const {acta, vacuna,seguro_medico, documento_personal, documento_personal2,foto2x2, documento} = documents
